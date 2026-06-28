@@ -1392,3 +1392,67 @@ a:hover {
         font-size: 1.5rem;
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   Rajdhani General Trading (RGT) — RESPONSIVE FIXES
+   Paste this at the END of your existing css/style.css
+   (or load it AFTER style.css). No HTML changes required.
+
+   Fixes:
+   1. Horizontal scroll on mobile caused by AOS fade-left/right
+      animations leaving elements shifted ~100px off-screen.
+   2. g-5 / g-4 gutters wider than container padding poking past
+      the screen edge.
+   3. Mobile menu panel + full-width hero buttons on phones.
+   ============================================================ */
+
+html { overflow-x: hidden; }
+html, body { max-width: 100%; }
+
+@media (max-width: 767.98px) {
+  .row.g-5, .row.gx-5 { --bs-gutter-x: 1.5rem; }
+  .container, .container-fluid,
+  .container-sm, .container-md, .container-lg, .container-xl {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* Keep AOS sideways reveals from causing horizontal scroll on phones/tablets */
+@media (max-width: 991.98px) {
+  [data-aos="fade-left"],
+  [data-aos="fade-right"] {
+    transform: translate3d(0, 30px, 0) !important;
+  }
+  [data-aos="fade-left"].aos-animate,
+  [data-aos="fade-right"].aos-animate {
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+/* Mobile collapsed menu: real panel + full-width CTA */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: var(--white);
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+  }
+  .navbar-nav .nav-item.ms-lg-3 .btn-custom { width: 100%; margin-top: 6px; }
+}
+
+/* Stack hero buttons full-width on small phones */
+@media (max-width: 575.98px) {
+  .hero-content .d-flex { flex-direction: column; gap: 12px !important; }
+  .hero-content .d-flex .btn-custom { width: 100%; }
+}
